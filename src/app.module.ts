@@ -1,10 +1,11 @@
+import { ProjectUseCases } from '@/application/use-cases/project';
+import { ProjectController } from '@/controllers/project/project.controller';
+import { InfrastructureModule } from '@/infrastructure/infrastructure.module';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [InfrastructureModule],
+  controllers: [ProjectController],
+  providers: [ProjectUseCases],
 })
-export class AppModule {}
+export class AppModule { }
