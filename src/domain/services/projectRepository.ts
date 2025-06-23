@@ -2,14 +2,11 @@ import { IProjectOptions } from "@/domain/interfaces/projectOptions";
 import { Project } from "@/domain/models/projects";
 
 export abstract class projectRepository {
-    public projects: Project[]
-
-    constructor(){
-        
-    }
+    constructor() { }
 
     abstract getAll(): Promise<Project[]>
-    abstract findBy(projectOptions: IProjectOptions): Project[]
-    abstract apply(): void
+    abstract get(id: number): Promise<Project>
+    abstract findBy(projectOptions: IProjectOptions): Promise<Project[]>
+    abstract apply(): Promise<void>
 
 } 

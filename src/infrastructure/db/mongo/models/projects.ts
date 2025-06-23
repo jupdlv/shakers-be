@@ -1,6 +1,6 @@
 import { BudgetORM } from "@/infrastructure/db/mongo/models/budget";
 import { Faq } from "@/infrastructure/db/mongo/models/faqs";
-import { Organization } from "@/infrastructure/db/mongo/models/organizations";
+import { OrganizationORM } from "@/infrastructure/db/mongo/models/organizations";
 import { Position } from "@/infrastructure/db/mongo/models/positions";
 import { User } from "@/infrastructure/db/mongo/models/user";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
@@ -10,8 +10,8 @@ export class ProjectORM {
   @Prop({ required: true })
   title: string;
 
-  @Prop({ type: Organization, required: true })
-  organization: Organization;
+  @Prop({ type: OrganizationORM, required: true })
+  organization: OrganizationORM;
 
   @Prop({ type: User, required: true })
   projectLeader: User;
@@ -19,7 +19,7 @@ export class ProjectORM {
   @Prop({ type: Number})
   category: Number;
 
-  @Prop({ type: Number, ref: 'Subcategory', required: true })
+  @Prop({ type: Number})
   subcategory: Number;
 
   @Prop({ type: Date, required: true })

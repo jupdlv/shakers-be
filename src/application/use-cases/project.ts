@@ -6,11 +6,15 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class ProjectUseCases {
 
-    public getAllProjects(projectRepository: projectRepository){
-        return projectRepository.getAll()
+    public async getAllProjects(projectRepository: projectRepository): Promise<Project[]>{
+        return await projectRepository.getAll()
     }
 
-    public filterProjects(projectRepository: projectRepository, IProjectOptions: IProjectOptions): Project[] {
+    public async getProjectExtraInfo(projectRepository: projectRepository, id: number): Promise<Project>{
+        return await projectRepository.get(id)
+    }
+
+    public async filterProjects(projectRepository: projectRepository, IProjectOptions: IProjectOptions): Promise<Project[]> {
         return projectRepository.findBy(IProjectOptions)
     }
 

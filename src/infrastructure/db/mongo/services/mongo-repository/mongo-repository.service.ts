@@ -9,16 +9,29 @@ import { Model } from 'mongoose';
 @Injectable()
 export class MongoRepositoryService extends projectRepository {
 
-    constructor(@InjectModel("projects") private readonly mongoDB: Model<ProjectORM>) {
+
+    constructor(@InjectModel("projects") private readonly projectDB: Model<ProjectORM>) {
         super();
     }
+
     public async getAll(): Promise<any[]> {
-        return this.mongoDB.find()
+        return this.projectDB.find()
     }
-    findBy(projectOptions: IProjectOptions): Project[] {
+
+    get(id: number): Promise<Project> {
         throw new Error('Method not implemented.');
     }
-    apply(): void {
+
+    public async findBy(projectOptions: IProjectOptions): Promise<Project[]> {
+        //TODO: order by
+        return await this.projectDB.find({
+/*             category: { $in: projectOptions.categories },
+            "organization.industry": { $in: projectOptions.industries }, */
+            "positions.skills": { $in: projectOptions.skills },
+/*             "positions.specialties": { $in: projectOptions.especialties }, */
+        })
+    }
+    public apply(): Promise<void> {
         throw new Error('Method not implemented.');
     }
 
