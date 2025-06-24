@@ -4,7 +4,7 @@ export class Organization {
     id: number
     name: string
     logo: string
-    industriy: Industry
+    industry: Industry
     constructor(
         id: number,
         name: string,
@@ -14,7 +14,7 @@ export class Organization {
         this.id = id
         this.name = name
         this.logo = logo
-        this.industriy = industriy
+        this.industry = industriy
     }
 
 }

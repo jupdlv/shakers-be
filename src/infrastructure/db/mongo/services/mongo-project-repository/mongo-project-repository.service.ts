@@ -6,7 +6,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, RootFilterQuery } from 'mongoose';
 import { ProjectMapper } from '@/infrastructure/db/mongo/mapper/project.mapper.inf';
-import { EOrderByPublishDate } from '@/application/dto/project-options';
+import { EOrderByPublishDate } from '@/application/dto/project-options.dto.app';
 
 @Injectable()
 export class MongoRepositoryService implements IProjectRepository {

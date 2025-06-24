@@ -1,4 +1,4 @@
-import { EOrderByPublishDate, IProjectOptionsDto } from "@/application/dto/project-options";
+import { EOrderByPublishDate, IProjectOptionsDto } from "@/application/dto/project-options.dto.app";
 import { MapperDtoDomain } from "@/application/mapper/mapper.app";
 import { IProjectOptions } from "@/domain/interfaces/project-options";
 

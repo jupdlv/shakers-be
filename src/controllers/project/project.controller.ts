@@ -1,5 +1,5 @@
-import { IPorjectDto } from '@/application/dto/project';
-import { IProjectOptionsDto } from '@/application/dto/project-options';
+import { IPorjectDto } from '@/application/dto/project.dto.app';
+import { IProjectOptionsDto } from '@/application/dto/project-options.dto.app';
 import { ProjectMapper } from '@/application/mapper/porject.mapper.app';
 import { ProjectOptionsMapper } from '@/application/mapper/project-options.mapper.app';
 import { ProjectUseCases } from '@/application/use-cases/project.use-case';
