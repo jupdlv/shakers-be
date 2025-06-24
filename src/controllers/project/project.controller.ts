@@ -30,8 +30,8 @@ export class ProjectController {
     }
 
     @Get(":id")
-    async getProjectById(@Param('id') id: number): Promise<IPorjectDto> {
-        const project: Project = await this.projectUseCase.getProjectExtraInfo(Number(id))
+    async getProjectById(@Param('id') id: string): Promise<IPorjectDto> {
+        const project: Project = await this.projectUseCase.getProjectExtraInfo(id)
         return this.projectMapper.fromDomainToDto(project)
     }
 
