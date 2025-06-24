@@ -1,5 +1,5 @@
 export interface IProjectOptions {
-    especialties?: Number[]
+    specialties?: Number[]
     skills?: Number[]
     categories?: Number[]
     industries?: Number[]

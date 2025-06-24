@@ -25,16 +25,13 @@ export class ProjectController {
     /* @Post("filter") */
     @Get("filter")
     async filterProjects(@Body() filters: IProjectOptionsDto): Promise<IPorjectDto[]> {
-        const filter: IProjectOptionsDto = {
-            skills: [16, 12, 14]
-        }
         const projects: Project[] = await this.projectUseCase.filterProjects(new ProjectOptionsMapper().fromDtoToDomain(filters))
         return projects.map(project => this.projectMapper.fromDomainToDto(project))
     }
 
     @Get(":id")
     async getProjectById(@Param('id') id: number): Promise<IPorjectDto> {
-        const project: Project = await this.projectUseCase.getProjectExtraInfo(id)
+        const project: Project = await this.projectUseCase.getProjectExtraInfo(Number(id))
         return this.projectMapper.fromDomainToDto(project)
     }
 

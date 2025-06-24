@@ -10,6 +10,7 @@ import { User } from "@/domain/models/user"
 
 
 export class Project {
+    id: Number
     title: string
     organization: Organization
     projectLeader: User

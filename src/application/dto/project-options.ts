@@ -1,13 +1,13 @@
 
-enum EOrder {
+export enum EOrderByPublishDate {
     "ASC" = 1,
     "DES" = -1
 }
 
 export interface IProjectOptionsDto {
-    especialties?: Number[]
+    specialties?: Number[]
     skills?: Number[]
     categories?: Number[]
     industries?: Number[]
-    orderByPublishDate?: EOrder
+    orderByPublishDate?: EOrderByPublishDate
 }

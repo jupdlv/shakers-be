@@ -10,6 +10,9 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 @Schema()
 export class ProjectORM {
   @Prop({ required: true })
+  id: Number;
+
+  @Prop({ required: true })
   title: string;
 
   @Prop({ type: OrganizationORM, required: true })
