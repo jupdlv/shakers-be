@@ -1,4 +1,4 @@
-export class Skill {
+export class Specialities {
     id: Number
     name: String | undefined
 

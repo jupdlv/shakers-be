@@ -1,8 +1,10 @@
 import { BudgetORM } from "@/infrastructure/db/mongo/models/budget";
-import { Faq } from "@/infrastructure/db/mongo/models/faqs";
+import { CategoryORM } from "@/infrastructure/db/mongo/models/categories";
+import { Faq as FaqORM } from "@/infrastructure/db/mongo/models/faqs";
 import { OrganizationORM } from "@/infrastructure/db/mongo/models/organizations";
-import { Position } from "@/infrastructure/db/mongo/models/positions";
-import { User } from "@/infrastructure/db/mongo/models/user";
+import { PositionORM } from "@/infrastructure/db/mongo/models/positions";
+import { SubCategoryORM } from "@/infrastructure/db/mongo/models/subcategories";
+import { User as UserORM } from "@/infrastructure/db/mongo/models/user";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 @Schema()
@@ -13,14 +15,14 @@ export class ProjectORM {
   @Prop({ type: OrganizationORM, required: true })
   organization: OrganizationORM;
 
-  @Prop({ type: User, required: true })
-  projectLeader: User;
+  @Prop({ type: UserORM, required: true })
+  projectLeader: UserORM;
 
-  @Prop({ type: Number})
-  category: Number;
+  @Prop({ type: CategoryORM})
+  category: Number | CategoryORM ;
 
-  @Prop({ type: Number})
-  subcategory: Number;
+  @Prop({ type: SubCategoryORM})
+  subcategory: Number | SubCategoryORM;
 
   @Prop({ type: Date, required: true })
   startDate: Date;
@@ -34,11 +36,11 @@ export class ProjectORM {
   @Prop({ required: true })
   description: string;
 
-  @Prop({ type: [String], required: true })
+  @Prop({ type: Array<String>, required: true })
   goals: string[];
 
-  @Prop({ type: [Faq], required: true })
-  faqs: Faq[];
+  @Prop({ type: Array<FaqORM>, required: true })
+  faqs: FaqORM[];
 
   @Prop({ type: String , required: true })
   status: string;
@@ -46,8 +48,8 @@ export class ProjectORM {
   @Prop({ type: Date, required: true })
   creationDate: Date;
 
-  @Prop({ type: [Position], required: true })
-  positions: Position[];
+  @Prop({ type: Array<PositionORM>, required: true })
+  positions: PositionORM[];
 
   @Prop({ required: true })
   totalApplicationsAmount: number;

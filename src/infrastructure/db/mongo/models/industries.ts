@@ -3,8 +3,8 @@ import { Prop, Schema } from "@nestjs/mongoose";
 @Schema()
 export class IndustriesORM{
   @Prop({ required: true })
-  id: number;
+  id: Number;
 
   @Prop({ required: true })
-  name: string;
+  name: String;
 }

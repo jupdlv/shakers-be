@@ -1,5 +1,4 @@
 import { EProjectStatus } from "@/domain/enum/project-status"
-import { IProjectProps } from "@/domain/interfaces/project-props"
 import { Budget } from "@/domain/models/budget"
 import { Category } from "@/domain/models/categories"
 import { Faq } from "@/domain/models/faqs"
@@ -8,8 +7,7 @@ import { Position } from "@/domain/models/positions"
 import { SubCategory } from "@/domain/models/subcategories"
 import { User } from "@/domain/models/user"
 
-
-export class Project {
+export interface IPorjectDto {
     title: string
     organization: Organization
     projectLeader: User
@@ -24,10 +22,6 @@ export class Project {
     status: EProjectStatus
     creationDate: Date
     positions: Position[]
-    totalApplicationsAmount:number
+    totalApplicationsAmount: number
     publishedAt: Date
-    
-    constructor(projectProps: IProjectProps){
-        Object.assign(this, projectProps)
-    }
 }

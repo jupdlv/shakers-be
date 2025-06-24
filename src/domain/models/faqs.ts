@@ -1,3 +1,3 @@
-export class Faq{
+export interface Faq{
     
 }

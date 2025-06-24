@@ -1,3 +1,5 @@
-export class Budget{
-    
+export interface Budget {
+    hourFrom: number,
+    hourTo: number,
+    total: number
 }
