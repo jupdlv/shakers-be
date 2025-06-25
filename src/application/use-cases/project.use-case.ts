@@ -1,14 +1,13 @@
 import { IProjectOptions } from "@/domain/interfaces/project-options";
 import { Project } from "@/domain/models/projects";
-import { MongoRepositoryService } from "@/infrastructure/db/mongo/services/mongo-project-repository/mongo-project-repository.service";
+import { MongoProjectRepositoryService } from "@/infrastructure/db/mongo/services/mongo-project-repository/mongo-project-repository.service";
 import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
-import { CastError } from "mongoose";
 
 @Injectable()
 export class ProjectUseCases {
 
     constructor(
-        private readonly projectRepository: MongoRepositoryService,
+        private readonly projectRepository: MongoProjectRepositoryService,
     ) { }
 
     public async getAllProjects(): Promise<Project[]> {

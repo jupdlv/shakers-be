@@ -9,7 +9,7 @@ import { ProjectMapper } from '@/infrastructure/db/mongo/mapper/project.mapper.i
 import { EOrderByPublishDate } from '@/application/dto/project-options.dto.app';
 
 @Injectable()
-export class MongoRepositoryService implements IProjectRepository {
+export class MongoProjectRepositoryService implements IProjectRepository {
 
     projectMapper: ProjectMapper = new ProjectMapper()
 

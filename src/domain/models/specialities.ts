@@ -1,4 +1,4 @@
-export class Specialities {
+export class Specialties {
     id: Number
     name: String | undefined
 

@@ -1,10 +1,9 @@
-import { IPorjectDto } from '@/application/dto/project.dto.app';
 import { IProjectOptionsDto } from '@/application/dto/project-options.dto.app';
+import { IPorjectDto } from '@/application/dto/project.dto.app';
 import { ProjectMapper } from '@/application/mapper/porject.mapper.app';
 import { ProjectOptionsMapper } from '@/application/mapper/project-options.mapper.app';
 import { ProjectUseCases } from '@/application/use-cases/project.use-case';
 import { Project } from '@/domain/models/projects';
-import { MongoRepositoryService } from '@/infrastructure/db/mongo/services/mongo-project-repository/mongo-project-repository.service';
 import { Body, Controller, Get, Param } from '@nestjs/common';
 
 @Controller('project')

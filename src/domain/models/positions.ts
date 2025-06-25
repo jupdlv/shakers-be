@@ -1,17 +1,17 @@
 import { Skill } from "@/domain/models/skills"
-import { Specialities } from "@/domain/models/specialities"
+import { Specialties } from "@/domain/models/specialities"
 
 export class Position {
     id: Number
     title: String
     skills: Skill[]
-    specialities: Specialities[]
+    specialities: Specialties[]
 
     constructor(
         id: Number,
         title: String,
         skills: Skill[],
-        specialities: Specialities[]
+        specialities: Specialties[]
     ) {
         this.id = id
         this.title = title
