@@ -7,8 +7,8 @@ export class SubCategoryUseCases {
     constructor() {
     }
 
-    public async getAllCategories(): Promise<SubCategory[]>{
-        return await this.categoryRepository.getAll()
+    public async getAllCategories(): Promise<SubCategory[] | undefined >{
+        return undefined
     }
 
 }

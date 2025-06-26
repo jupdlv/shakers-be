@@ -7,8 +7,8 @@ export class SpecialtyUseCases {
     constructor() {
     }
 
-    public async getAllCategories(): Promise<Specialties[]>{
-        return await this.categoryRepository.getAll()
+    public async getAllCategories(): Promise<Specialties[] | undefined>{
+        return undefined
     }
 
 }

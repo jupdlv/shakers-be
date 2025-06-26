@@ -7,8 +7,8 @@ export class SkillUseCases {
     constructor() {
     }
 
-    public async getAllCategories(): Promise<Skill[]>{
-        return await this.categoryRepository.getAll()
+    public async getAllCategories(): Promise<Skill[] | undefined>{
+        return 
     }
 
 }
