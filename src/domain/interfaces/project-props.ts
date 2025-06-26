@@ -1,4 +1,4 @@
-import { EProjectStatus } from "@/domain/enum/projectStatus"
+import { EProjectStatus } from "@/domain/enum/project-status"
 import { Budget } from "@/domain/models/budget"
 import { Category } from "@/domain/models/categories"
 import { Faq } from "@/domain/models/faqs"
@@ -8,21 +8,21 @@ import { SubCategory } from "@/domain/models/subcategories"
 import { User } from "@/domain/models/user"
 
 export interface IProjectProps {
-    name: string
-    title: string
+    id?: Number
+    title: String
     organization: Organization
     projectLeader: User
     category: Category
     subCategory: SubCategory
     startDate: Date
     budget: Budget
-    totalHours: number
-    description: string
+    totalHours: Number
+    description: String
     goals: string[]
     faqs: Faq[]
     status: EProjectStatus
     creationDate: Date
     positions: Position[]
-    totalApplicationsAmount: number
+    totalApplicationsAmount: Number
     publishedAt: Date
 }

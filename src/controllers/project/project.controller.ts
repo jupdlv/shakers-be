@@ -1,34 +1,37 @@
-import { ProjectUseCases } from '@/application/use-cases/project';
-import { IProjectOptions } from '@/domain/interfaces/projectOptions';
+import { IProjectOptionsDto } from '@/application/dto/project-options.dto.app';
+import { IPorjectDto } from '@/application/dto/project.dto.app';
+import { ProjectMapper } from '@/application/mapper/porject.mapper.app';
+import { ProjectOptionsMapper } from '@/application/mapper/project-options.mapper.app';
+import { ProjectUseCases } from '@/application/use-cases/project.use-case';
 import { Project } from '@/domain/models/projects';
-import { MongoRepositoryService } from '@/infrastructure/db/mongo/services/mongo-repository/mongo-repository.service';
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param } from '@nestjs/common';
 
 @Controller('project')
 export class ProjectController {
 
+    private projectMapper = new ProjectMapper()
+
     constructor(
-        private readonly mongoRepository: MongoRepositoryService,
         private readonly projectUseCase: ProjectUseCases
     ) { }
 
     @Get()
-    async getProjects(): Promise<Project[]> { //TODO: Temporalmente, hay que hacer el parseador DTO
-        return await this.projectUseCase.getAllProjects(this.mongoRepository)
+    async getProjects(): Promise<IPorjectDto[]> { //TODO: Temporalmente, hay que hacer el parseador DTO
+        const projects: Project[] = await this.projectUseCase.getAllProjects() //TODO: refactor 
+        return projects.map(project => this.projectMapper.fromDomainToDto(project))
     }
 
     /* @Post("filter") */
     @Get("filter")
-    async filterProjects(/* @Body() filters: IProjectOptions */): Promise<Project[]> {
-        const filter: IProjectOptions = {
-            skills: [16, 12, 14]
-        }
-        return await this.projectUseCase.filterProjects(this.mongoRepository, filter)
+    async filterProjects(@Body() filters: IProjectOptionsDto): Promise<IPorjectDto[]> {
+        const projects: Project[] = await this.projectUseCase.filterProjects(new ProjectOptionsMapper().fromDtoToDomain(filters))
+        return projects.map(project => this.projectMapper.fromDomainToDto(project))
     }
 
     @Get(":id")
-    async getProjectById(@Param('id') id: number): Promise<Project> { //TODO: Temporalmente, hay que hacer el parseador DTO
-        return await this.projectUseCase.getProjectExtraInfo(this.mongoRepository, id)
+    async getProjectById(@Param('id') id: string): Promise<IPorjectDto> {
+        const project: Project = await this.projectUseCase.getProjectExtraInfo(id)
+        return this.projectMapper.fromDomainToDto(project)
     }
 
 

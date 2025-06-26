@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { MongoRepositoryService } from './mongo-repository.service';
+import { MongoProjectRepositoryService } from './mongo-project-repository.service';
 
 describe('MongoRepositoryService', () => {
-  let service: MongoRepositoryService;
+  let service: MongoProjectRepositoryService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [MongoRepositoryService],
+      providers: [MongoProjectRepositoryService],
     }).compile();
 
-    service = module.get<MongoRepositoryService>(MongoRepositoryService);
+    service = module.get<MongoProjectRepositoryService>(MongoProjectRepositoryService);
   });
 
   it('should be defined', () => {

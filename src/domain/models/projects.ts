@@ -1,5 +1,5 @@
-import { EProjectStatus } from "@/domain/enum/projectStatus"
-import { IProjectProps } from "@/domain/interfaces/projectProps"
+import { EProjectStatus } from "@/domain/enum/project-status"
+import { IProjectProps } from "@/domain/interfaces/project-props"
 import { Budget } from "@/domain/models/budget"
 import { Category } from "@/domain/models/categories"
 import { Faq } from "@/domain/models/faqs"
@@ -10,23 +10,23 @@ import { User } from "@/domain/models/user"
 
 
 export class Project {
-    private name: string
-    private title: string
-    private organization: Organization
-    private projectLeader: User
-    private category: Category
-    private subCategory: SubCategory
-    private startDate: Date
-    private budget: Budget
-    private totalHours: number
-    private description: string
-    private goals: string[]
-    private faqs: Faq[]
-    private status: EProjectStatus
-    private creationDate: Date
-    private positions: Position[]
-    private totalApplicationsAmount:number
-    private publishedAt: Date
+    id: Number
+    title: string
+    organization: Organization
+    projectLeader: User
+    category: Category
+    subCategory: SubCategory
+    startDate: Date
+    budget: Budget
+    totalHours: number
+    description: string
+    goals: string[]
+    faqs: Faq[]
+    status: EProjectStatus
+    creationDate: Date
+    positions: Position[]
+    totalApplicationsAmount:number
+    publishedAt: Date
     
     constructor(projectProps: IProjectProps){
         Object.assign(this, projectProps)
