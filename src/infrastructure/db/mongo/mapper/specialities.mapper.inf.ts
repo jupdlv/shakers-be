@@ -4,7 +4,7 @@ import { SpecialtiesORM } from "@/infrastructure/db/mongo/models/specialties";
 
 export class SpecialtiesMapper implements MapperOrmDomain<SpecialtiesORM | Number, Specialties> {
     fromOrmToDomain(entity: Number | SpecialtiesORM): Specialties {
-        const id = (entity instanceof SpecialtiesORM) ? entity.id : entity
+        const id = (entity instanceof SpecialtiesORM) ? entity._id : entity
         const name = (entity instanceof SpecialtiesORM) ? entity.name : undefined
         return new Specialties(id, name)
     }

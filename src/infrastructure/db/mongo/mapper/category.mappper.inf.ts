@@ -4,7 +4,7 @@ import { CategoryORM } from "@/infrastructure/db/mongo/models/categories";
 
 export class CategoryMapper implements MapperOrmDomain<CategoryORM | Number, Category> {
     fromOrmToDomain(entity: CategoryORM | Number): Category {
-        const id = (entity instanceof CategoryORM) ? entity.id : entity
+        const id = (entity instanceof CategoryORM) ? entity._id : entity
         const name = (entity instanceof CategoryORM) ? entity.name : undefined
         return new Category(id, name)
     }

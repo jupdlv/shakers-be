@@ -1,11 +1,12 @@
-import { Prop, Schema } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-@Schema()
+@Schema({collection: "specialties"})
 export class SpecialtiesORM {
 
   @Prop({ required: true })
-  id: Number;
+  _id: Number;
 
   @Prop({ required: true })
   name: String;
 }
+export const SpecialtiesSchema = SchemaFactory.createForClass(SpecialtiesORM);
