@@ -31,7 +31,7 @@ export class MongoProjectRepositoryService implements IProjectRepository {
     public async get(id: number): Promise<Project> {
         const project: ProjectORM | undefined | null = await this.projectDB.findOne({ id: id })
         if (!project) throw new HttpException("This project not exists", HttpStatus.BAD_REQUEST)
-        return this.projectMapper.fromOrmToDomain(project)
+        return this.projectMapper.fromOrmToDomain(project) // NOTE: Not usefull function
     }
 
     public async findBy(projectOptions: IProjectOptions): Promise<Project[]> {
