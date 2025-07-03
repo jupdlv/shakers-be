@@ -4,7 +4,7 @@ import { IndustriesORM } from "@/infrastructure/db/mongo/models/industries";
 
 export class IndustryMapper implements MapperOrmDomain<IndustriesORM | Number, Industry> {
     fromOrmToDomain(entity: IndustriesORM | Number): Industry {
-        const id = (entity instanceof IndustriesORM) ? entity.id : entity
+        const id = (entity instanceof IndustriesORM) ? entity._id : entity
         const name = (entity instanceof IndustriesORM) ? entity.name : undefined
         return new Industry(id, name)
     }

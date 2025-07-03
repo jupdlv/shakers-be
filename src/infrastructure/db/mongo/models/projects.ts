@@ -7,7 +7,7 @@ import { SubCategoryORM } from "@/infrastructure/db/mongo/models/subcategories";
 import { User as UserORM } from "@/infrastructure/db/mongo/models/user";
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-@Schema()
+@Schema({collection: "projects"})
 export class ProjectORM {
   @Prop({ required: true })
   id: Number;
@@ -21,10 +21,10 @@ export class ProjectORM {
   @Prop({ type: UserORM, required: true })
   projectLeader: UserORM;
 
-  @Prop({ type: CategoryORM})
+  @Prop({ type: Number, ref: 'categories' })
   category: Number | CategoryORM ;
 
-  @Prop({ type: SubCategoryORM})
+  @Prop({ type: Number, ref: 'subcategories' })
   subcategory: Number | SubCategoryORM;
 
   @Prop({ type: Date, required: true })
@@ -51,7 +51,7 @@ export class ProjectORM {
   @Prop({ type: Date, required: true })
   creationDate: Date;
 
-  @Prop({ type: Array<PositionORM>, required: true })
+  @Prop({ type: [PositionORM], required: true })
   positions: PositionORM[];
 
   @Prop({ required: true })

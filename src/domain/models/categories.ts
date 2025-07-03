@@ -1,9 +1,9 @@
 export class Category{
-      id: Number;
+      _id: Number;
       name: String | undefined;
 
       constructor(id: Number, name: string | undefined){
-        this.id = id
+        this._id = id
         this.name = name 
       }
 }

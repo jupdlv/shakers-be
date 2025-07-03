@@ -17,18 +17,27 @@ export class MongoProjectRepositoryService implements IProjectRepository {
     }
 
     public async getAll(): Promise<Project[]> {
-        const projects: ProjectORM[] = await this.projectDB.find()
-        return projects.map(project => this.projectMapper.fromOrmToDomain(project));
+        const projects: ProjectORM[] = await this.projectDB.find().populate("category").populate({
+            path: "positions", populate: {
+                path: "skills",
+                model: "skills"
+            }
+        })
+        return projects as unknown as Project[]
+        /*         return projects.map(project => this.projectMapper.fromOrmToDomain(project));
+         */
     }
 
     public async get(id: number): Promise<Project> {
-        const project: ProjectORM | undefined | null = await this.projectDB.findOne({id: id})
+        const project: ProjectORM | undefined | null = await this.projectDB.findOne({ id: id })
         if (!project) throw new HttpException("This project not exists", HttpStatus.BAD_REQUEST)
-        return this.projectMapper.fromOrmToDomain(project)
+        return this.projectMapper.fromOrmToDomain(project) // NOTE: Not usefull function
     }
 
     public async findBy(projectOptions: IProjectOptions): Promise<Project[]> {
-        const projects: ProjectORM[] = await this.projectDB.find(this.generateFilter(projectOptions)).sort((projectOptions?.orderByPublishDate ? { publishedAt: projectOptions.orderByPublishDate == EOrderByPublishDate.ASC ? 1 : -1 } : {}))
+        const projects: ProjectORM[] = await this.projectDB.find(
+            this.generateFilter(projectOptions)).sort((
+                projectOptions?.orderByPublishDate ? { publishedAt: projectOptions.orderByPublishDate == EOrderByPublishDate.ASC ? 1 : -1 } : {}))
         return projects.map(project => new ProjectMapper().fromOrmToDomain(project));
     }
     public apply(): Promise<void> {
